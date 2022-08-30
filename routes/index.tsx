@@ -1,7 +1,7 @@
 /** @jsx h */
 import { h } from "preact";
 import Footer from "../islands/Footer.tsx";
-import Header from "../islands/header.tsx";
+import Header from "../islands/Header.tsx";
 import Main from "../islands/Main.tsx";
 
 export default function Home() {
