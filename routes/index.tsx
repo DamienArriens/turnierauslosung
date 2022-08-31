@@ -1,15 +1,13 @@
 /** @jsx h */
 import { h } from "preact";
-import Footer from "../islands/footer.tsx";
 import Header from "../islands/header.tsx";
-import Main from "../islands/main.tsx";
+import Main from "../islands/Main.tsx";
 
-export default function Home() {
+export default function Home(): h.JSX.Element {
   return (
     <div>
       <Header></Header>
-      <Main></Main>
-      <Footer></Footer>
+      <Main name="" playerList={[]}></Main>
     </div>
   );
 }
