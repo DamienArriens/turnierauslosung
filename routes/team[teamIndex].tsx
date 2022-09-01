@@ -1,6 +1,6 @@
 /** @jsx h */
 import { h } from "preact";
-import Header from "../islands/header.tsx";
+import Header from "../islands/something.tsx";
 import { PageProps } from "$fresh/server.ts";
 
 export default function Team(props: PageProps): h.JSX.Element {
