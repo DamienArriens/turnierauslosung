@@ -11,6 +11,7 @@ export default function Home(): h.JSX.Element {
         name=""
         playerList={[]}
         teamList={[]}
+        groupList={[]}
       >
       </Main>
     </div>
