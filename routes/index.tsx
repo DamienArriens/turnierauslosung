@@ -7,7 +7,12 @@ export default function Home(): h.JSX.Element {
   return (
     <div>
       <Header></Header>
-      <Main name="" playerList={[]}></Main>
+      <Main
+        name=""
+        playerList={["1", "2", "3", "4", "5", "6", "7", "8", "9"]}
+        teamList={[]}
+      >
+      </Main>
     </div>
   );
 }

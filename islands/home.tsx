@@ -1,35 +1,84 @@
+// deno-lint-ignore-file no-explicit-any
 /** @jsx h */
 import { h } from "preact";
 import { useState } from "preact/hooks";
-// import $ from "https://code.jquery.com/jquery-3.6.1.min.js";
 
 interface ListProps {
   name: string;
   playerList: string[];
+  teamList: Team[];
+  children: any;
+}
+
+interface Team {
+  player1: string;
+  player2: string;
 }
 
 export default function Main(props: ListProps) {
   const [name, setName] = useState(props.name);
   const [playerList, addPlayer] = useState(props.playerList);
-  const listItems = playerList.map((item) => <li>{item}</li>);
+  const [teams, addTeam] = useState(props.teamList);
   return (
     <div>
-      <h1>Main</h1>
-      <input type="text"></input>
-      <ul id="playerList">
-        {listItems}
+      <input
+        type="text"
+        value={name}
+        onInput={(e) => {
+          setName(e.currentTarget.value);
+        }}
+      />
+      <button
+        onClick={() => {
+          if (playerList.includes(name)) {
+            return;
+          }
+          addPlayer([...playerList, name]);
+          setName("");
+        }}
+      >
+        Add Player
+      </button>
+      <ul>
+        {playerList.map((item) => {
+          return (
+            <div>
+              <li>{item}</li>
+              <button
+                onClick={() => {
+                  addPlayer(playerList.filter((i) => i !== item));
+                }}
+              >
+                -
+              </button>
+            </div>
+          );
+        })}
       </ul>
       <button
         onClick={() => {
-          setName(name);
-          playerList.push(name);
-          addPlayer(playerList);
+          const temp = [...playerList];
+          const teamList: Team[] = [];
+          while (temp.length > 1) {
+            teamList.push({
+              player1: temp.splice(Math.random() * temp.length, 1)[0],
+              player2: temp.splice(Math.random() * temp.length, 1)[0],
+            });
+          }
+          addTeam(teamList);
         }}
-        label="Add Player"
-        height={400}
-        width={400}
       >
+        Create Teams
       </button>
+      <ul>
+        {teams.map((item, index) => {
+          return (
+            <li>
+              Team {index + 1}: {item.player1} and {item.player2}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

@@ -3,8 +3,9 @@ import { h } from "preact";
 
 export default function Header() {
   return (
-    <div>
-      <h1>Header</h1>
-    </div>
+    <header>
+      <img src="/icon.svg" height={100} width={100} alt="SWAN"></img>
+      <h1>SWAN Turnierplaner</h1>
+    </header>
   );
 }
